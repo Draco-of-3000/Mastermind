@@ -38,12 +38,12 @@ class Mastermind
 
         cpu_selection
         
-        until @@number_of_guesses == 10 || @@human_code == @@cpu_code
+        until @@number_of_guesses == 5 || @@human_code == @@cpu_code
             @@human_code.clear
 
             human_selection
 
-            puts @@cpu_points
+            puts cpu_score
 
             @@human_code.each_with_index do |color, index|
                 if @@cpu_code.include?(color)
