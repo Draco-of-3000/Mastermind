@@ -52,7 +52,7 @@ class Mastermind
                     puts wrong_feedback
                 end
             end
-            @@cpu_points += 1
+            count_cpu_points
             count_guess
         end 
 
