@@ -35,12 +35,14 @@ class Mastermind
             @answer = gets.chomp.downcase
             @@human_answer = @answer
         end
-        @@human_answer
 
         cpu_selection
-        human_selection
         
         until @@number_of_guesses == 10 || @@human_code == @@cpu_code
+            @@human_code.clear
+
+            human_selection
+
             puts @@cpu_points
 
             @@human_code.each_with_index do |color, index|
