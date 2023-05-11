@@ -7,7 +7,7 @@ class Mastermind
     @@number_of_guesses = 0
 
     def cpu_selection
-        @random_colors = @@Colors.sample(4).map(&:downcase)
+        @random_colors = @@colors.sample(4).map(&:downcase)
         @@cpu_code = @random_colors
         return @@cpu_code
     end
@@ -34,7 +34,27 @@ class Mastermind
             @answer = gets.chomp.downcase
             @@human_answer = @answer
         end
-        @@human_answer    
+        @@human_answer
+
+        cpu_selection
+        human_selection
+        
+        until @@number_of_guesses == 10 || @@human_code == @@cpu_code
+            puts @@cpu_points
+
+            @@human_code.each_with_index do |color, index|
+                if @@cpu_code.include?(color)
+                    puts mid_feedback
+                elsif @@cpu_code[index] == color
+                    puts correct_feedback
+                else
+                    puts wrong_feedback
+                end
+            end
+            @@cpu_points += 1
+            @@number_of_guesses += 1
+        end 
+
     end
 
     def cpu_code_breaker
@@ -50,7 +70,7 @@ class Mastermind
     end
 
     def count_guess
-        @@number_of_guesses++
+        @@number_of_guesses += 1
         @@number_of_guesses
     end
 
