@@ -59,7 +59,7 @@ class Mastermind
     end
 
     def mid_feedback
-
+        return "white"
     end
 
     def correct_feedback
