@@ -115,7 +115,7 @@ class Mastermind
     end
 
     def declare_winner_vs_cpu
-        if @@number_of_guesses == 10 && @@human_code != @@cpu_code
+        if @@number_of_guesses == 5 && @@human_code != @@cpu_code
             puts "In colors concealed, code remains unbroken," + "\n" +
             "Failure lingers, better luck next time Code Breaker"
         elsif @@human_code == @@cpu_code
