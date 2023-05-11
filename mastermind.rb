@@ -56,6 +56,7 @@ class Mastermind
             end
             count_cpu_points
             count_guess
+            declare_winner_vs_cpu
         end 
 
     end
