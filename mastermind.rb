@@ -89,7 +89,7 @@ class Mastermind
 
     def count_cpu_points
         @@cpu_points += 1
-        @@@cpu_points
+        @@cpu_points
     end
 
     def assign_points
