@@ -113,6 +113,17 @@ class Mastermind
     def declare_winner
 
     end
+
+    def declare_winner_vs_cpu
+        if @@number_of_guesses == 10 && @@human_code != @@cpu_code
+            puts "In colors concealed, code remains unbroken," + "\n" +
+            "Failure lingers, better luck next time Code Breaker"
+        elsif @@human_code == @@cpu_code
+            puts "Victorious! The code succumbs to your might," + "\n" +
+            "In colors aligned, mastery shines bright." "\n" +
+            "Congratulations, Code Breaker, for your grand win!"
+        end
+    end
 end
 
 game = Mastermind.new
