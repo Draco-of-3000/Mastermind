@@ -55,7 +55,7 @@ class Mastermind
     end
 
     def wrong_feedback
-
+        return "null"
     end
 
     def mid_feedback
