@@ -1,10 +1,13 @@
 class Mastermind
-    def color_array
-
+    @@Colors = ["Red", "Green", "Blue", "Yellow", "Orange", "Purple", "Brown","Pink"]
+    
+    def random_selection
+        @random_colors = @@Colors.sample(4).map(&:downcase)
+        return @random_colors
     end
-
+    
     def cpu_code_maker
-
+        
     end
 
     def cpu_code_breaker
@@ -56,3 +59,5 @@ class Mastermind
     end
 end
 
+game = Mastermind.new
+puts game.random_selection
