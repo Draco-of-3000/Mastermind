@@ -63,7 +63,7 @@ class Mastermind
     end
 
     def correct_feedback
-
+        return "black"
     end
 
     def count_points
