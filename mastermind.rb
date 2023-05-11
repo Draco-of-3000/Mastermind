@@ -4,6 +4,7 @@ class Mastermind
     @@human_code = []
     @@cpu_points = 0
     @@human_answer = " "
+    @@number_of_guesses = 0
 
     def cpu_selection
         @random_colors = @@Colors.sample(4).map(&:downcase)
@@ -49,7 +50,8 @@ class Mastermind
     end
 
     def count_guess
-
+        @@number_of_guesses++
+        return @@number_of_guesses
     end
 
     def wrong_feedback
