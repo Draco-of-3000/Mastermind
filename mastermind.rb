@@ -53,7 +53,7 @@ class Mastermind
                 end
             end
             @@cpu_points += 1
-            @@number_of_guesses += 1
+            count_guess
         end 
 
     end
