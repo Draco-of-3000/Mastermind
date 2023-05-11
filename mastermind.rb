@@ -3,6 +3,7 @@ class Mastermind
     @@cpu_code = " "
     @@human_code = []
     @@cpu_points = 0
+    @@human_answer = " "
 
     def cpu_selection
         @random_colors = @@Colors.sample(4).map(&:downcase)
@@ -21,7 +22,18 @@ class Mastermind
     end
 
     def cpu_code_maker
-        
+        puts "Welcome to Mastermind! You are the Code Breaker and the CPU is the Code Maker" + \n +
+        "You have 10 tries to guess the write colors and their right positions" + \n +
+        "The feedback will be 'white' for every color you get right but not in order!" + \n +
+        "The feedback will be 'black' for every color you get right but not in order!" + \n +
+        "The onus is on you to use this information to break the code" + \n +
+        "Are you up to the task Code Breaker? type 'yes' to continue"
+
+        until @@human_answer == 'yes'
+            @answer = gets.chomp.downcase
+            @@human_answer = @answer
+        end
+        @@human_answer    
     end
 
     def cpu_code_breaker
