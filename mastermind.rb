@@ -115,6 +115,10 @@ class Mastermind
 
     end
 
+    def reveal_cpu_answer
+        puts "Code Maker's code was #{cpu_selection}"
+    end
+
     def declare_winner_vs_cpu
         if @@number_of_guesses == 5 && @@human_code != @@cpu_code
             puts "In colors concealed, code remains unbroken," + "\n" +
