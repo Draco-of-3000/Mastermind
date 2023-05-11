@@ -5,6 +5,7 @@ class Mastermind
     @@cpu_points = 0
     @@human_answer = " "
     @@number_of_guesses = 0
+    @@code_maker_points = 0
 
     def cpu_selection
         @random_colors = @@colors.sample(4).map(&:downcase)
