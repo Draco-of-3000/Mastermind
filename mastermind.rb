@@ -155,7 +155,7 @@ class Mastermind
         puts "Code Maker's code was #{@cpu_code}"
     end
 
-    def declare_winner_as_cpu
+    def declare_winner_as_code_breaker
         if @@number_of_guesses == 5 && @@human_code != @cpu_code
             puts "In colors concealed, code remains unbroken," + "\n" +
             "Failure lingers, better luck next time Code Breaker"
