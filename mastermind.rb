@@ -120,7 +120,7 @@ class Mastermind
     end
 
     def reveal_cpu_answer
-        puts "Code Maker's code was #{cpu_selection}"
+        puts "Code Maker's code was #{@cpu_code}"
     end
 
     def declare_winner_vs_cpu
