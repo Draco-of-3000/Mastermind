@@ -50,12 +50,12 @@ class Mastermind
             puts cpu_score
 
             @@human_code.each_with_index do |color, index|
-                if @cpu_code.include?(color)
-                    puts mid_feedback
-                elsif @cpu_code[index] == color
-                    puts correct_feedback
+                if @cpu_code[index] == color
+                  puts correct_feedback
+                elsif @cpu_code.include?(color)
+                  puts mid_feedback
                 else
-                    puts wrong_feedback
+                  puts wrong_feedback
                 end
             end
             count_cpu_points
