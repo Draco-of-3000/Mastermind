@@ -66,7 +66,7 @@ class Mastermind
     end
 
     def code_maker_score
-        puts "Code Maker score = #{@@cpu_points} points"
+        puts "Code Maker score = #{@@code_maker_points} points"
     end
 
     def cpu_code_breaker
