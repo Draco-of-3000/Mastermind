@@ -4,7 +4,7 @@ class Mastermind
     @@cpu_points = 0
     @@human_answer = " "
     @@number_of_guesses = 0
-    @@code_maker_points = 0
+    @@code_maker_points = 1
 
     attr_accessor :cpu_code 
     def initialize
