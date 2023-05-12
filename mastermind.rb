@@ -46,7 +46,7 @@ class Mastermind
 
             human_selection
 
-            puts cpu_score
+            puts code_maker_score
 
             @@human_code.each_with_index do |color, index|
                 if @cpu_code[index] == color
@@ -57,7 +57,7 @@ class Mastermind
                   puts wrong_feedback
                 end
             end
-            count_cpu_points
+            count_code_maker_points
             count_guess
             declare_winner_vs_cpu
         end 
