@@ -71,7 +71,7 @@ class Mastermind
 
     end
 
-    def game_loop
+    def cpu_code_maker_game_loop
         until @@number_of_guesses == 5 || @@human_code == @cpu_code
             @@human_code.clear
 
