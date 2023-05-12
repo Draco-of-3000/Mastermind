@@ -1,7 +1,6 @@
 class Mastermind
     @@colors = ["Red", "Green", "Blue", "Yellow", "Orange", "Purple", "Brown","Pink"]
     @@human_code = []
-    @@cpu_points = 0
     @@human_answer = " "
     @@number_of_guesses = 0
     @@code_maker_points = 1
