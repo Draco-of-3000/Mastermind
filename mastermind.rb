@@ -40,9 +40,9 @@ class Mastermind
             @@human_answer = @answer
         end
 
-        @@cpu_code = cpu_selection
+        @cpu_code = cpu_selection
         
-        until @@number_of_guesses == 5 || @@human_code == @@cpu_code
+        until @@number_of_guesses == 5 || @@human_code == @cpu_code
             @@human_code.clear
 
             human_selection
@@ -50,9 +50,9 @@ class Mastermind
             puts cpu_score
 
             @@human_code.each_with_index do |color, index|
-                if @@cpu_code.include?(color)
+                if @cpu_code.include?(color)
                     puts mid_feedback
-                elsif @@cpu_code[index] == color
+                elsif @cpu_code[index] == color
                     puts correct_feedback
                 else
                     puts wrong_feedback
