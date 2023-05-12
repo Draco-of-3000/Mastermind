@@ -66,17 +66,18 @@ class Mastermind
 
             puts code_maker_score
 
-            @cpu_code.each_with_index do |color, index|
-                if @@human_code[index] == color
+            @@human_code.each_with_index do |color, index|
+                if @cpu_code[index] == color
                   puts correct_feedback
-                elsif @@human_code.include?(color)
+                elsif @cpu_code.include?(color)
                   puts mid_feedback
                 else
                   puts wrong_feedback
                 end
             end
+            puts cpu_selection
             count_code_maker_points
-            declare_winner_vs_cpu
+            count_guess
         end 
 
     end
@@ -154,7 +155,7 @@ class Mastermind
         puts "Code Maker's code was #{@cpu_code}"
     end
 
-    def declare_winner_vs_cpu
+    def declare_winner_as_cpu
         if @@number_of_guesses == 5 && @@human_code != @cpu_code
             puts "In colors concealed, code remains unbroken," + "\n" +
             "Failure lingers, better luck next time Code Breaker"
@@ -170,4 +171,4 @@ class Mastermind
 end
 
 game = Mastermind.new
-puts game.cpu_code_maker
+puts game.cpu_code_breaker
