@@ -61,6 +61,24 @@ class Mastermind
 
         human_selection
 
+        until @@number_of_guesses == 5 || @cpu_code == @@human_code
+            cpu_selection
+
+            puts code_maker_score
+
+            @cpu_code.each_with_index do |color, index|
+                if @@human_code[index] == color
+                  puts correct_feedback
+                elsif @@human_code.include?(color)
+                  puts mid_feedback
+                else
+                  puts wrong_feedback
+                end
+            end
+            count_code_maker_points
+            declare_winner_vs_cpu
+        end 
+
     end
 
     def get_player_names
