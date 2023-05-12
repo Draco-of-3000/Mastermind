@@ -8,7 +8,7 @@ class Mastermind
 
     attr_accessor :cpu_code 
     def initialize
-        @cpu_code = @cpu_code
+        @cpu_code = []
     end
 
     def cpu_selection
