@@ -41,7 +41,7 @@ class Mastermind
 
         @cpu_code = cpu_selection
         
-        game_loop
+        cpu_code_maker_game_loop
     end
 
     def code_maker_score
