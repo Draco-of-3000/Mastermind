@@ -41,27 +41,7 @@ class Mastermind
 
         @cpu_code = cpu_selection
         
-        until @@number_of_guesses == 5 || @@human_code == @cpu_code
-            @@human_code.clear
-
-            human_selection
-
-            puts code_maker_score
-
-            @@human_code.each_with_index do |color, index|
-                if @cpu_code[index] == color
-                  puts correct_feedback
-                elsif @cpu_code.include?(color)
-                  puts mid_feedback
-                else
-                  puts wrong_feedback
-                end
-            end
-            count_code_maker_points
-            count_guess
-            declare_winner_vs_cpu
-        end 
-
+        game_loop
     end
 
     def code_maker_score
