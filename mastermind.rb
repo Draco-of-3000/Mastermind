@@ -109,7 +109,7 @@ class Mastermind
             end
             count_code_maker_points
             count_guess
-            declare_winner_vs_cpu
+            declare_winner_as_code_breaker
         end 
     end
 
