@@ -9,8 +9,8 @@ class Mastermind
 
     def cpu_selection
         @random_colors = @@colors.sample(4).map(&:downcase)
-        @@cpu_code = @random_colors
-        return @@cpu_code
+        @result = @random_colors
+        return @result
     end
     
     def human_selection
