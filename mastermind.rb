@@ -1,11 +1,15 @@
 class Mastermind
     @@colors = ["Red", "Green", "Blue", "Yellow", "Orange", "Purple", "Brown","Pink"]
-    @@cpu_code = " "
     @@human_code = []
     @@cpu_points = 0
     @@human_answer = " "
     @@number_of_guesses = 0
     @@code_maker_points = 0
+
+    attr_accessor :cpu_code 
+    def initialize
+        @cpu_code = @cpu_code
+    end
 
     def cpu_selection
         @random_colors = @@colors.sample(4).map(&:downcase)
@@ -36,7 +40,7 @@ class Mastermind
             @@human_answer = @answer
         end
 
-        cpu_selection
+        @@cpu_code = cpu_selection
         
         until @@number_of_guesses == 5 || @@human_code == @@cpu_code
             @@human_code.clear
