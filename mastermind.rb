@@ -107,9 +107,9 @@ class Mastermind
         return "black"
     end
 
-    def count_cpu_points
-        @@cpu_points += 1
-        @@cpu_points
+    def count_code_maker_points
+        @@code_maker_points += 1
+        @@code_maker_points
     end
 
     def assign_points
