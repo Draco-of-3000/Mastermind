@@ -104,7 +104,20 @@ class Mastermind
     end
 
     def get_number_of_games
+        puts "How many rounds do you want to play?"
+        @@rounds = nil
 
+        until @@rounds.is_a?(Integer) && number > 0
+            puts "Enter a positive integer: "
+            input = gets.chomp
+
+            if input.match?(/\A\d+\z/)
+                @@rounds = input.to_i
+            else
+                puts "Invalid input. Please enter a valid number."
+            end 
+        end
+        @@rounds
     end
 
     def cpu_code_maker_game_loop
