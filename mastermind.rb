@@ -166,7 +166,6 @@ class Mastermind
         if @@number_of_guesses == 5 && @cpu_code != @@human_code
             puts "In colors concealed, your code remains unbroken," + "\n" +
             "Victorious you are! Code Maker!"
-            count_code_maker_points
         elsif @cpu_code == @@human_code
             puts "From the depths of your code's demise,," + "\n" +
             "The Breaker emerges, victorious and wise." "\n" +
