@@ -91,6 +91,18 @@ class Mastermind
 
     end
 
+    def player_vs_player
+        puts "Welcome to Mastermind!" + "\n" +
+        "Type 'yes' to continue"
+
+        until @@human_answer == 'yes'
+            @answer = gets.chomp.downcase
+            @@human_answer = @answer
+        end
+
+        get_player_names
+    end
+
     def get_player_names
         puts "Welcome to Mastermind"
         puts "Player 1, please enter your name"
