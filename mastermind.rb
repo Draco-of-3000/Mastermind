@@ -135,7 +135,7 @@ class Mastermind
         puts "How many rounds do you want to play?"
         @@rounds = nil
 
-        until @@rounds.is_a?(Integer) && number > 0
+        until @@rounds.is_a?(Integer) && @@rounds > 0
             puts "Enter a positive integer: "
             input = gets.chomp
 
@@ -260,4 +260,4 @@ class Mastermind
 end
 
 game = Mastermind.new
-puts game.cpu_code_breaker
+puts game.get_number_of_games
