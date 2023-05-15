@@ -88,12 +88,19 @@ class Mastermind
         puts "Player 1, please enter your name"
         @player1_name = gets.chomp
         puts "Would you like to be Code Maker or Code Breaker, type 'Maker' or 'Breaker'"
-        @player_choice = gets.chomp.downcase
+        @player1_role = gets.chomp.downcase
 
-        until @player_choice == 'maker' || 'breaker'
+        until @player1_role == 'maker' || 'breaker'
             puts "Invalid input, type 'Maker' or 'Breaker'"
-            @player_choice = gets.chomp.downcase
+            @player1_role = gets.chomp.downcase
         end
+
+        player_one = Players.new(@player1_name, @player1_role)
+
+        puts "Player 2, please enter your name"
+        @player2_name = gets.chomp
+        @player2_role = player_one.role == 'maker' ? 'breaker' : 'maker'
+        player_two = Players.new(@player2_name, @player2_role)
     end
 
     def get_number_of_games
