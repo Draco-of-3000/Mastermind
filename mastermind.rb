@@ -15,6 +15,8 @@ class Mastermind
     @@player_one_points = 1
     @@player_two_points = 1
     @@rounds = nil
+    @@code_maker_code = []
+    @@code_breaker_code = []
 
     attr_accessor :cpu_code 
     def initialize
