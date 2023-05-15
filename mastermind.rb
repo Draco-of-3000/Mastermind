@@ -17,6 +17,7 @@ class Mastermind
     @@rounds = nil
     @@code_maker_code = []
     @@code_breaker_code = []
+    @@current_player = " "
 
     attr_accessor :cpu_code 
     def initialize
