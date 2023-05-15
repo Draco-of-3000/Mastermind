@@ -121,6 +121,16 @@ class Mastermind
         @@player_one_code
     end
 
+    def player_two_selection
+        puts "Pick 4 colors out of #{@@colors} in any order you want to be your code"
+        
+        until @@player_two_code.size == 4
+            @input = gets.chomp.downcase
+            @@player_two_code.push(@input)
+        end
+        @@player_two_code
+    end
+
     def get_number_of_games
         puts "How many rounds do you want to play?"
         @@rounds = nil
