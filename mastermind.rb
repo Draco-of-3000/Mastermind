@@ -60,6 +60,16 @@ class Mastermind
         cpu_code_maker_game_loop
     end
 
+    def human_code_maker
+        if @player_one.role == 'maker'
+            @code_maker_code = player_one_selection
+            @code_breaker_code = player_two_selection
+        elsif player_two.role == 'maker'
+            @code_maker_code = player_two_selection
+            @code_breaker_code = player_one_selection
+        end
+    end
+
     def code_maker_score
         puts "Code Maker score = #{@@code_maker_points} points"
     end
