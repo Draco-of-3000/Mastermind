@@ -1,3 +1,11 @@
+class Players
+    attr_accessor :name, :role
+    def initialize (name, role)
+        @name = name
+        @role = role
+    end
+end
+
 class Mastermind
     @@colors = ["Red", "Green", "Blue", "Yellow", "Orange", "Purple", "Brown","Pink"]
     @@human_code = []
