@@ -76,7 +76,16 @@ class Mastermind
     end
 
     def get_player_names
+        puts "Welcome to Mastermind"
+        puts "Player 1, please enter your name"
+        @player1_name = gets.chomp
+        puts "Would you like to be Code Maker or Code Breaker, type 'Maker' or 'Breaker'"
+        @player_choice = gets.chomp.downcase
 
+        until @player_choice == 'maker' || 'breaker'
+            puts "Invalid input, type 'Maker' or 'Breaker'"
+            @player_choice = gets.chomp.downcase
+        end
     end
 
     def get_number_of_games
