@@ -169,7 +169,10 @@ class Mastermind
     end
 
     def assign_points
-
+        if @@number_of_guesses == 5 && player_one.role == 'maker'
+            @@player_one_points = @code_maker_points
+        elsif @@number_of_guesses == 5 && player_one.role == 'maker'
+            @@player_two_points = @code_maker_points
     end
 
     def swap_roles
