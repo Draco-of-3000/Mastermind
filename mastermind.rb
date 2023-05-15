@@ -187,8 +187,16 @@ class Mastermind
 
     end
 
-    def declare_winner
-
+    def declare_winner_after_round
+        if @@code_breaker_code == @code_maker_code && player_one.role == 'maker'
+            puts "#{@player2_name} wins this round!"
+        elsif @@number_of_guesses == 5 && @code_breaker_code != @code_maker_code && player_one.role == 'maker'
+            puts "#{@player1_name} wins this round!"
+        elsif @@code_breaker_code == @code_maker_code && player_two.role == 'maker'
+            puts "#{@player1_name} wins this round!"
+        elsif @@number_of_guesses == 5 && @code_breaker_code != @code_maker_code && player_two.role == 'maker'
+            puts "#{@player2_name} wins this round!"
+        end
     end
 
     def reveal_cpu_answer
