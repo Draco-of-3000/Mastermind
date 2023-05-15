@@ -63,9 +63,15 @@ class Mastermind
     def human_code_maker
         if @player_one.role == 'maker'
             @code_maker_code = player_one_selection
-            @code_breaker_code = player_two_selection
         elsif player_two.role == 'maker'
             @code_maker_code = player_two_selection
+        end
+    end
+
+    def human_code_breaker
+        if @player_one.role == 'breaker'
+            @code_breaker_code = player_two_selection
+        elsif player_two.role == 'maker'
             @code_breaker_code = player_one_selection
         end
     end
