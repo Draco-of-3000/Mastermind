@@ -179,7 +179,7 @@ class Mastermind
     end
 
     def swap_roles
-
+        @@current_player = @current_player == 'maker' ? 'breaker' : 'maker'
     end
 
     def new_game
