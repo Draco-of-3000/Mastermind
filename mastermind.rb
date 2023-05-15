@@ -62,9 +62,32 @@ class Mastermind
 
     def human_code_maker
         if @player_one.role == 'maker'
-            @code_maker_code = player_one_selection
-        elsif player_two.role == 'maker'
-            @code_maker_code = player_two_selection
+            @code_maker_selection = player_one_selection
+            @code_breaker_selection = player_two_selection
+            @@player_one_points = @@code_maker_points 
+        elsif @player_two.role == 'maker'
+            @code_maker_selection = player_two_selection
+            @code_breaker_selection = player_one_selection
+            @@player_two_points = @@code_maker_points
+        end
+
+        until @@number_of_guesses == 5 || @@code_breaker_code == @@code_maker_code
+            @@code_breaker_code.clear
+
+            @code_breaker_selection 
+
+            @@code_maker_code.each_with_index do |color, index|
+                if @@code_breaker_code[index] == color
+                  puts correct_feedback
+                elsif @@code_breaker_code.include?(color)
+                  puts mid_feedback
+                else
+                  puts wrong_feedback
+                end
+            end
+            count_code_maker_points
+            count_guess
+            declare_winner_after_round
         end
     end
 
