@@ -12,6 +12,9 @@ class Mastermind
     @@human_answer = " "
     @@number_of_guesses = 0
     @@code_maker_points = 1
+    @@player_one_points = 1
+    @@player_two_points = 1
+    @@rounds = nil
 
     attr_accessor :cpu_code 
     def initialize
