@@ -109,6 +109,16 @@ class Mastermind
         player_two = Players.new(@player2_name, @player2_role)
     end
 
+    def player_one_selection
+        puts "Pick 4 colors out of #{@@colors} in any order you want to be your code"
+        
+        until @@player_one_code.size == 4
+            @input = gets.chomp.downcase
+            @@player_one_code.push(@input)
+        end
+        @@player_one_code
+    end
+
     def get_number_of_games
         puts "How many rounds do you want to play?"
         @@rounds = nil
@@ -206,7 +216,7 @@ class Mastermind
             puts "#{@player2_name} has won the game!"
         end
     end
-    
+
     def reveal_cpu_answer
         puts "Code Maker's code was #{@cpu_code}"
     end
