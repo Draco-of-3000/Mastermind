@@ -20,6 +20,9 @@ class Mastermind
     @@player_one_code = []
     @@player_two_code = []
     @@current_player = " "
+    @@code_maker_selection = []
+    @@code_breaker_selection = []
+
 
     attr_accessor :cpu_code 
     def initialize
@@ -70,7 +73,27 @@ class Mastermind
             @code_breaker_selection = player_one_selection
             @@player_two_points = @@code_maker_points
         end
-        @code_maker_selection
+        
+        until @@number_of_guesses == 5 || @@code_breaker_code == @@code_maker_code
+            @@code_breaker_code.clear
+
+            human_code_breaker
+
+            @@code_maker_code.each_with_index do |color, index|
+                if @@code_breaker_code[index] == color
+                  puts correct_feedback
+                elsif @@code_breaker_code.include?(color)
+                  puts mid_feedback
+                else
+                  puts wrong_feedback
+                end
+            end
+            count_code_maker_points
+            count_guess
+            assign_points
+            declare_winner_after_round
+            swap_roles
+        end
     end
 
     def human_code_breaker
@@ -118,58 +141,57 @@ class Mastermind
     end
 
     def player_vs_player
-        puts "Welcome to Mastermind!" + "\n" +
-        "Type 'yes' to continue"
-
+        puts "Welcome to Mastermind!\nType 'yes' to continue"
+      
         until @@human_answer == 'yes'
-            @answer = gets.chomp.downcase
-            @@human_answer = @answer
+          @answer = gets.chomp.downcase
+          @@human_answer = @answer
         end
-
-        get_player_names
-
-        human_code_maker
-
-        until @@number_of_guesses == 5 || @@code_breaker_code == @@code_maker_code
-            @@code_breaker_code.clear
-
-            human_code_breaker
-
-            @@code_maker_code.each_with_index do |color, index|
-                if @@code_breaker_code[index] == color
-                  puts correct_feedback
-                elsif @@code_breaker_code.include?(color)
-                  puts mid_feedback
-                else
-                  puts wrong_feedback
-                end
+      
+        player_one_selection
+      
+        (@@rounds - 1).times do |round|
+          puts "Round #{round + 1} starts now"
+      
+          player_two_selection
+          puts "This is code breaker: #{@@code_breaker_code}"
+      
+          @@code_maker_code.each_with_index do |color, index|
+            if @@code_breaker_code[index] == color
+              puts correct_feedback
+            elsif @@code_breaker_code.include?(color)
+              puts mid_feedback
+            else
+              puts wrong_feedback
             end
-            count_code_maker_points
-            count_guess
-            assign_points
-            declare_winner_after_round
-            swap_roles
+          end
+      
+          count_code_maker_points
+          count_guess
+          @@code_maker_code.clear
+          @@code_breaker_code.clear
+      
+          puts "Round #{round + 2} starts now"
+          swap_roles
         end
     end
+      
 
     def get_player_names
         puts "Welcome to Mastermind"
         puts "Player 1, please enter your name"
         @player1_name = gets.chomp
-        puts "Would you like to be Code Maker or Code Breaker, type 'Maker' or 'Breaker'"
-        @player1_role = gets.chomp.downcase
-
-        until @player1_role == 'maker' || 'breaker'
-            puts "Invalid input, type 'Maker' or 'Breaker'"
-            @player1_role = gets.chomp.downcase
-        end
-
+        @player1_role == 'maker'
         @player_one = Players.new(@player1_name, @player1_role)
 
         puts "Player 2, please enter your name"
         @player2_name = gets.chomp
-        @player2_role = @player_one.role == 'maker' ? 'breaker' : 'maker'
+        @player2_role == 'breaker'
         @player_two = Players.new(@player2_name, @player2_role)
+
+        get_number_of_games
+
+        player_vs_player
     end
 
     def player_one_selection
@@ -178,18 +200,20 @@ class Mastermind
         until @@player_one_code.size == 4
             @input = gets.chomp.downcase
             @@player_one_code.push(@input)
+            @@code_maker_code = @@player_one_code
         end
-        @@player_one_code
+        @@code_maker_code
     end
 
     def player_two_selection
-        puts "Pick 4 colors out of #{@@colors} in any order you want to be your code"
+        puts "Attempt to break the code by picking 4 colors out of #{@@colors} in any order"
         
         until @@player_two_code.size == 4
             @input = gets.chomp.downcase
             @@player_two_code.push(@input)
+            @@code_breaker_code = @@player_two_code
         end
-        @@player_two_code
+        @@code_breaker_code
     end
 
     def get_number_of_games
@@ -255,17 +279,23 @@ class Mastermind
     end
 
     def assign_points
-        if @@number_of_guesses == 5 || @code_breaker_code == @code_maker_code && player_one.role == 'maker'
+        if @@number_of_guesses == 5 || @code_breaker_code == @code_maker_code && @player_one.role == 'maker'
             @@player_one_points = @code_maker_points
-        elsif @@number_of_guesses == 5 || @code_breaker_code == @code_maker_code && player_two.role == 'maker'
+        elsif @@number_of_guesses == 5 || @code_breaker_code == @code_maker_code && @player_two.role == 'maker'
             @@player_two_points = @code_maker_points
         end
     end
 
     def swap_roles
-        @@current_player = @current_player == 'maker' ? 'breaker' : 'maker'
+        puts "Time to switch!"
+        if @@number_of_guesses == 5 || @@code_breaker_code == @@code_maker_code
+          temp_selection = player_one_selection
+      
+          @@code_maker_code = player_two_selection
+          @@code_breaker_code = temp_selection
+        end
     end
-
+      
     def new_game
 
     end
@@ -321,4 +351,4 @@ class Mastermind
 end
 
 game = Mastermind.new
-game.player_vs_player
+game.get_player_names
