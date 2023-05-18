@@ -151,6 +151,8 @@ class Mastermind
     def play_game
         @@rounds.times do |round|
           puts "Round #{round + 1} starts now"
+
+          reset_variables
           
           player_vs_player
         end
