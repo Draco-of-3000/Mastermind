@@ -14,7 +14,7 @@ class Mastermind
     @@code_maker_points = 1
     @@player_one_points = 1
     @@player_two_points = 1
-    @@rounds = nil
+    @@rounds = 3
     @@code_maker_code = []
     @@code_breaker_code = []
     @@player_one_code = []
@@ -148,6 +148,14 @@ class Mastermind
 
     end
 
+    def play_game
+        @@rounds.times do |round|
+          puts "Round #{round + 1} starts now"
+          
+          player_vs_player
+        end
+    end
+
     def player_vs_player
         puts "Welcome to Mastermind!\nType 'yes' to continue"
       
@@ -158,30 +166,25 @@ class Mastermind
       
         player_one_selection
       
-        (@@rounds - 1).times do |round|
-          puts "Round #{round + 1} starts now"
-      
-          player_two_selection
-          puts "This is code breaker: #{@@code_breaker_code}"
-      
-          @@code_maker_code.each_with_index do |color, index|
-            if @@code_breaker_code[index] == color
-              puts correct_feedback
-            elsif @@code_breaker_code.include?(color)
-              puts mid_feedback
-            else
-              puts wrong_feedback
+        until @@number_of_guesses == 5 || @@code_breaker_code == @@code_maker_code 
+            @@code_breaker_code.clear
+
+            player_two_selection
+
+            puts player_code_maker_score
+
+            @@code_breaker_code.each_with_index do |color, index|
+                if @@code_maker_code[index] == color
+                  puts correct_feedback
+                elsif @@code_maker_code.include?(color)
+                  puts mid_feedback
+                else
+                  puts wrong_feedback
+                end
             end
-          end
-      
-          count_code_maker_points
-          count_guess
-          @@code_maker_code.clear
-          @@code_breaker_code.clear
-      
-          puts "Round #{round + 2} starts now"
-          swap_roles
-        end
+            count_code_maker_points
+            count_guess
+        end 
     end
       
 
@@ -197,9 +200,7 @@ class Mastermind
         @player2_role == 'breaker'
         @player_two = Players.new(@player2_name, @player2_role)
 
-        get_number_of_games
-
-        player_vs_player
+        nested_loop_example
     end
 
     def player_one_selection
@@ -309,13 +310,13 @@ class Mastermind
     end
 
     def declare_winner_after_round
-        if @@code_breaker_code == @code_maker_code && player_one.role == 'maker'
+        if @@code_breaker_code == @@code_maker_code && @player_one.role == 'maker'
             puts "#{@player2_name} wins this round!"
-        elsif @@number_of_guesses == 5 && @code_breaker_code != @code_maker_code && player_one.role == 'maker'
+        elsif @@number_of_guesses == 5 && @@code_breaker_code != @@code_maker_code && @player_one.role == 'maker'
             puts "#{@player1_name} wins this round!"
-        elsif @@code_breaker_code == @code_maker_code && player_two.role == 'maker'
+        elsif @@code_breaker_code == @@code_maker_code && @player_two.role == 'maker'
             puts "#{@player1_name} wins this round!"
-        elsif @@number_of_guesses == 5 && @code_breaker_code != @code_maker_code && player_two.role == 'maker'
+        elsif @@number_of_guesses == 5 && @@code_breaker_code != @@code_maker_code && @player_two.role == 'maker'
             puts "#{@player2_name} wins this round!"
         end
     end
