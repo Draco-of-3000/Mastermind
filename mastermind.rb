@@ -113,6 +113,14 @@ class Mastermind
         puts "Code Maker score = #{@@code_maker_points} points"
     end
 
+    def player_code_maker_score
+        if @player_one.role == 'maker'
+            puts @@player_one_points
+        elsif @player_two.role == 'maker'
+            puts @@player_two_points
+        end
+    end
+
     def cpu_code_breaker
         puts "Welcome to Mastermind! You are the Code Maker and the CPU is the Code Breaker" + "\n" +
         "The CPU has 10 tries to guess the right colors and their right positions" + "\n" +
