@@ -156,6 +156,13 @@ class Mastermind
         end
     end
 
+    def reset_variables
+        @@number_of_guesses = 0
+        @@code_breaker_code = []
+        @@code_maker_code = []
+        @@player_one_code = []
+    end
+
     def player_vs_player
         puts "Welcome to Mastermind!\nType 'yes' to continue"
       
