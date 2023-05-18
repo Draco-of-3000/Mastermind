@@ -209,7 +209,7 @@ class Mastermind
         @player2_role == 'breaker'
         @player_two = Players.new(@player2_name, @player2_role)
 
-        nested_loop_example
+        play_game
     end
 
     def player_one_selection
