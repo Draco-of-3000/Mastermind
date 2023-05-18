@@ -161,8 +161,10 @@ class Mastermind
     def reset_variables
         @@number_of_guesses = 0
         @@code_breaker_code = []
+        @@human_answer = " "
         @@code_maker_code = []
         @@player_one_code = []
+        @@player_two_code = []
     end
 
     def player_vs_player
