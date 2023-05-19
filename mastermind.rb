@@ -167,7 +167,7 @@ class Mastermind
         @@code_maker_code = []
         @@player_one_code = []
         @@player_two_code = []
-        @@code_maker_points = []
+        @@code_maker_points = 1
         @@player_one_points = []
         @@player_two_points = []
     end
