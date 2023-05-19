@@ -115,10 +115,10 @@ class Mastermind
 
     def player_code_maker_score
         if @player_one.role == 'maker'
-            @@code_maker_points = @@player_one_points
+            @@player_one_points = count_code_maker_points
             puts "\n" + "Code Maker #{@player1_name}'s points: #{@@player_one_points}"
         elsif @player_two.role == 'maker'
-            @@code_maker_points = @@player_two_points
+            @@player_two_points = count_code_maker_points
             puts "\n" + "Code Maker #{@player2_name}'s points: #{@@player_two_points}"
         end
     end
@@ -168,8 +168,6 @@ class Mastermind
         @@player_one_code = []
         @@player_two_code = []
         @@code_maker_points = 1
-        @@player_one_points = []
-        @@player_two_points = []
     end
 
     def player_vs_player
