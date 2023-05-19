@@ -204,12 +204,12 @@ class Mastermind
         puts "Welcome to Mastermind"
         puts "Player 1, please enter your name"
         @player1_name = gets.chomp
-        @player1_role == 'maker'
+        @player1_role = 'maker'
         @player_one = Players.new(@player1_name, @player1_role)
 
         puts "Player 2, please enter your name"
         @player2_name = gets.chomp
-        @player2_role == 'breaker'
+        @player2_role = 'breaker'
         @player_two = Players.new(@player2_name, @player2_role)
 
         play_game
@@ -324,8 +324,11 @@ class Mastermind
             code_maker_name = @player1_name
             code_breaker_name = @player2_name
         end
-        puts "#{code_maker_name} is the code maker now"
-        puts "#{code_breaker_name}, can you break #{code_maker_name}'s code?"
+        
+        if code_maker_name && code_breaker_name
+            puts "#{code_maker_name} is the code maker now"
+            puts "#{code_breaker_name}, can you break #{code_maker_name}'s code?"
+        end
     end
       
     def new_game
