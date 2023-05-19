@@ -195,7 +195,8 @@ class Mastermind
             end
             count_code_maker_points
             count_guess
-        end 
+        end
+        swap_roles
     end
       
 
@@ -314,6 +315,17 @@ class Mastermind
           @@code_maker_code = player_two_selection
           @@code_breaker_code = temp_selection
         end
+
+        
+        if @player_one.role == 'maker'
+            code_maker_name = @player2_name
+            code_breaker_name = @player1_name
+          elsif @player_two.role == 'maker'
+            code_maker_name = @player1_name
+            code_breaker_name = @player2_name
+        end
+        puts "#{code_maker_name} is the code maker now"
+        puts "#{code_breaker_name}, can you break #{code_maker_name}'s code?"
     end
       
     def new_game
