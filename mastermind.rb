@@ -119,7 +119,7 @@ class Mastermind
             puts "\n" + "Code Maker #{@player1_name}'s points: #{@@player_one_points}"
         elsif @player_two.role == 'maker'
             @@code_maker_points = @@player_two_points
-            puts "/n" + "Code Maker #{@player2_name}'s points: #{@@player_two_points}"
+            puts "\n" + "Code Maker #{@player2_name}'s points: #{@@player_two_points}"
         end
     end
 
@@ -184,8 +184,6 @@ class Mastermind
 
             player_two_selection
 
-            puts player_code_maker_score
-
             @@code_breaker_code.each_with_index do |color, index|
                 if @@code_maker_code[index] == color
                   puts correct_feedback
@@ -197,6 +195,7 @@ class Mastermind
             end
             count_code_maker_points
             count_guess
+            puts player_code_maker_score
         end
         swap_roles
     end
