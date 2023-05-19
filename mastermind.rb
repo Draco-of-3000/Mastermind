@@ -170,7 +170,7 @@ class Mastermind
     end
 
     def player_vs_player
-        puts "Welcome to Mastermind!\nType 'yes' to continue"
+        puts "Type 'yes' to continue"
       
         until @@human_answer == 'yes'
           @answer = gets.chomp.downcase
@@ -184,7 +184,11 @@ class Mastermind
 
             player_two_selection
 
+            puts "\n" "Feedback" + "\n" + "-----+-----+-----"
+
             @@code_breaker_code.each_with_index do |color, index|
+
+
                 if @@code_maker_code[index] == color
                   puts correct_feedback
                 elsif @@code_maker_code.include?(color)
