@@ -168,6 +168,8 @@ class Mastermind
         @@player_one_code = []
         @@player_two_code = []
         @@code_maker_points = 1
+        @@player_one_points = []
+        @@player_two_points = []
     end
 
     def player_vs_player
@@ -185,6 +187,8 @@ class Mastermind
 
             player_two_selection
 
+            puts code_maker_score
+
             puts "\n" "Feedback" + "\n" + "-----+-----+-----"
 
             @@code_breaker_code.each_with_index do |color, index|
@@ -199,8 +203,9 @@ class Mastermind
                 end
             end
             count_code_maker_points
+            assign_points
             count_guess
-            puts player_code_maker_score
+            declare_winner_after_round
         end
         swap_roles
     end
@@ -342,14 +347,10 @@ class Mastermind
     end
 
     def declare_winner_after_round
-        if @@code_breaker_code == @@code_maker_code && @player_one.role == 'maker'
-            puts "#{@player2_name} wins this round!"
-        elsif @@number_of_guesses == 5 && @@code_breaker_code != @@code_maker_code && @player_one.role == 'maker'
-            puts "#{@player1_name} wins this round!"
-        elsif @@code_breaker_code == @@code_maker_code && @player_two.role == 'maker'
-            puts "#{@player1_name} wins this round!"
-        elsif @@number_of_guesses == 5 && @@code_breaker_code != @@code_maker_code && @player_two.role == 'maker'
-            puts "#{@player2_name} wins this round!"
+        if @@code_breaker_code == @@code_maker_code 
+            puts "#{code_breaker_name} wins this round!"
+        elsif @@number_of_guesses == 5 && @@code_breaker_code != @@code_maker_code
+            puts "#{code_maker_name} wins this round!"
         end
     end
 
