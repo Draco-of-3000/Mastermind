@@ -311,12 +311,15 @@ class Mastermind
     end
 
     def assign_points
-        if @@number_of_guesses == 5 || @code_breaker_code == @code_maker_code && @player_one.role == 'maker'
+        if @@number_of_guesses == 5 || @code_breaker_code == @code_maker_code
+          if @player_one.role == 'maker'
             @@player_one_points = "#{@player1_name} points: #{@code_maker_points}"
-        elsif @@number_of_guesses == 5 || @code_breaker_code == @code_maker_code && @player_two.role == 'maker'
+          elsif @player_two.role == 'maker'
             @@player_two_points = "#{@player2_name} points: #{@code_maker_points}"
+          end
         end
     end
+      
 
     def swap_roles
         puts "Time to switch!"
@@ -344,10 +347,6 @@ class Mastermind
         declare_winner_after_round
     end
       
-      
-    def new_game
-
-    end
 
     def declare_winner_after_round
         if @@code_breaker_code == @@code_maker_code 
@@ -394,6 +393,11 @@ class Mastermind
             "Better luck next time, O' Maestro of Deception."
         end
     end
+
+    def new_game
+
+    end
+
 end
 
 game = Mastermind.new
