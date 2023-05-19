@@ -22,7 +22,8 @@ class Mastermind
     @@current_player = " "
     @@code_maker_selection = []
     @@code_breaker_selection = []
-
+    @@code_breaker_name = " "
+    @@code_maker_name = " "
 
     attr_accessor :cpu_code 
     def initialize
@@ -205,7 +206,6 @@ class Mastermind
             count_code_maker_points
             assign_points
             count_guess
-            declare_winner_after_round
         end
         swap_roles
     end
@@ -320,27 +320,30 @@ class Mastermind
 
     def swap_roles
         puts "Time to switch!"
+        
         if @@number_of_guesses == 5 || @@code_breaker_code == @@code_maker_code
           temp_selection = player_one_selection
-      
+        
           @@code_maker_code = player_two_selection
           @@code_breaker_code = temp_selection
         end
-
         
         if @player_one.role == 'maker'
-            code_maker_name = @player2_name
-            code_breaker_name = @player1_name
-          elsif @player_two.role == 'maker'
-            code_maker_name = @player1_name
-            code_breaker_name = @player2_name
+          @code_maker_name = @player2_name
+          @code_breaker_name = @player1_name
+        elsif @player_two.role == 'maker'
+          @code_maker_name = @player1_name
+          @code_breaker_name = @player2_name
         end
         
-        if code_maker_name && code_breaker_name
-            puts "#{code_maker_name} is the code maker now"
-            puts "#{code_breaker_name}, can you break #{code_maker_name}'s code?"
+        if @code_maker_name && @code_breaker_name
+          puts "#{@code_maker_name} is the code maker now"
+          puts "#{@code_breaker_name}, can you break #{@code_maker_name}'s code?"
         end
+        
+        declare_winner_after_round
     end
+      
       
     def new_game
 
@@ -348,11 +351,12 @@ class Mastermind
 
     def declare_winner_after_round
         if @@code_breaker_code == @@code_maker_code 
-            puts "#{code_breaker_name} wins this round!"
+          puts "#{@code_breaker_name} wins this round!"
         elsif @@number_of_guesses == 5 && @@code_breaker_code != @@code_maker_code
-            puts "#{code_maker_name} wins this round!"
+          puts "#{@code_maker_name} wins this round!"
         end
     end
+      
 
     def declare_winner_after_game_over
         if @@rounds == 0 && @@player_one_points > @@player_two_points
