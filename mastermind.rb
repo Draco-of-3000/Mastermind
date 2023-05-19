@@ -167,6 +167,9 @@ class Mastermind
         @@code_maker_code = []
         @@player_one_code = []
         @@player_two_code = []
+        @@code_maker_points = []
+        @@player_one_points = []
+        @@player_two_points = []
     end
 
     def player_vs_player
