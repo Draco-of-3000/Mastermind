@@ -395,10 +395,13 @@ class Mastermind
       
 
     def declare_winner_after_game_over
-        if @@rounds == 0 && @@player_one_points > @@player_two_points
-            puts "#{@player1_name} has won the game!"
-        elsif @@rounds == 0 && @@player_two_points > @@player_one_points
-            puts "#{@player2_name} has won the game!"
+        max_points = @player_points.values.max
+        winners = @player_points.select { |player, points| points == max_points }.keys
+      
+        if winners.length == 1
+          puts "#{winners[0]} wins!"
+        else
+          puts "It's a tie between #{winners.join(' and ')}!"
         end
     end
 
