@@ -214,19 +214,24 @@ class Mastermind
     end
       
 
-    def get_player_names
+    def get_player_names_and_roles
+        roles = ["maker", "breaker"]
         puts "Welcome to Mastermind"
-        puts "Player 1, please enter your name"
-        @player1_name = gets.chomp
-        @player1_role = 'maker'
-        @player_one = Players.new(@player1_name, @player1_role)
 
-        puts "Player 2, please enter your name"
-        @player2_name = gets.chomp
-        @player2_role = 'breaker'
-        @player_two = Players.new(@player2_name, @player2_role)
+        2.times do |index|
+            puts "Enter your name Player #{index + 1}:"
+            player_name = gets.chomp
 
-        play_game
+            puts "Available roles: maker, breaker"
+            puts "#{player_name}, enter your role"
+            player_role = gets.chomp.downcase
+
+            until roles.include?(player_role)
+                puts "Invalid role! Available roles: code maker, code breaker"
+                puts "#{player_name}, enter your role"
+                player_role = gets.chomp.downcase
+            end
+        end
     end
 
     def get_player_roles
