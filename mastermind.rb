@@ -391,9 +391,12 @@ class Mastermind
 
     def declare_winner_after_round
         if @@code_breaker_code == @@code_maker_code 
-          puts "#{@code_breaker} wins this round!"
+            puts "#{@code_breaker} is victorious! The code succumbs to your might," + "\n" +
+            "In colors aligned, mastery shines bright." "\n" +
+            "Congratulations, #{@code_breaker}, for breaking the code!"
         elsif @@number_of_guesses == 5 && @@code_breaker_code != @@code_maker_code
-          puts "#{@code_maker} wins this round!"
+            puts "In colors concealed, #{@code_maker}'s code remains unbroken," + "\n" +
+            "Failure lingers, better luck next time #{@code_breaker}"
         end
     end
       
