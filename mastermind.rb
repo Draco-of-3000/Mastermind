@@ -207,7 +207,9 @@ class Mastermind
                 end
             end
             count_guess
-            puts "\n" + "-----+-----+-----" + "\n"
+            puts "-----+-----+-----" + "\n"
+
+            swap_roles if game_over
         end
     end
       
