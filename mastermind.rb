@@ -218,9 +218,18 @@ class Mastermind
         roles = ["maker", "breaker"]
         puts "Welcome to Mastermind"
 
+        players = []
+
         2.times do |index|
             puts "Enter your name Player #{index + 1}:"
             player_name = gets.chomp
+            available_roles = roles.dup
+
+            if index == 1 && players [0][1] == "maker"
+                available_roles.delete("maker")
+            elsif index == 1 && players [0][1] == "breaker"
+                available_roles.delete("breaker")
+            end
 
             puts "Available roles: maker, breaker"
             puts "#{player_name}, enter your role"
@@ -231,7 +240,11 @@ class Mastermind
                 puts "#{player_name}, enter your role"
                 player_role = gets.chomp.downcase
             end
+
+            players << [player_name, player_role]
         end
+
+        players
     end
 
     def get_player_roles
