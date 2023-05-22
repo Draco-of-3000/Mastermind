@@ -352,26 +352,13 @@ class Mastermind
       
 
     def swap_roles
-        puts "Time to switch!"
+        puts "Time to switch roles!"
         
-        if @@number_of_guesses == 5 || @@code_breaker_code == @@code_maker_code
-          @@temp_selection = player_one_selection
-        
-          @@code_maker_code = player_two_selection
-          @@code_breaker_code = @@temp_selection
-        end
+        @code_maker, @code_breaker = @code_breaker, @code_maker
 
-        if @player_one.role == 'maker'
-            @@code_maker_name = @player2_name
-            @@code_breaker_name = @player1_name
-        elsif @player_two.role == 'maker'
-            @@code_maker_name = @player1_name
-            @@code_breaker_name = @player2_name
-        end
-          
-        if @code_maker_name && @code_breaker_name
-            puts "#{@@code_maker_name} is the code maker now"
-            puts "#{@@code_breaker_name}, can you break #{@@code_maker_name}'s code?"
+        if @code_maker && @code_breaker
+            puts "#{@code_maker} is the code maker now"
+            puts "#{@code_breaker}, can you break #{@@code_maker_name}'s code?"
         end
     end
       
