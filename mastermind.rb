@@ -187,12 +187,12 @@ class Mastermind
           @@human_answer = @answer
         end
       
-        code_maker_selection
+        code_maker_selection if @code_maker
       
         until @@number_of_guesses == 5 || @@code_breaker_code == @@code_maker_code 
             @@code_breaker_code.clear
 
-            code_breaker_selection
+            code_breaker_selection if @code_breaker
 
             puts "\n" "Feedback" + "\n" + "-----+-----+-----"
 
@@ -206,8 +206,6 @@ class Mastermind
                   puts wrong_feedback
                 end
             end
-            count_code_maker_points
-            puts assign_points
             count_guess
             puts "\n" + "-----+-----+-----" + "\n"
         end
@@ -245,7 +243,7 @@ class Mastermind
             assign_player_roles(player_name, player_role)
         end
 
-        puts players
+        player_vs_player
     end
 
     def assign_player_roles(player_name, player_role)
@@ -261,7 +259,7 @@ class Mastermind
         
         until @@code_maker_code.size == 4
             @input = gets.chomp.downcase
-            @@code_maker_code = @input
+            @@code_maker_code.push(@input)
         end
         @@code_maker_code
     end
@@ -271,7 +269,7 @@ class Mastermind
         
         until @@code_breaker_code.size == 4
             @input = gets.chomp.downcase
-            @@code_breaker_code = @input
+            @@code_breaker_code.push(@input)
         end
         @@code_breaker_code
     end
