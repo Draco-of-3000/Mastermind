@@ -208,6 +208,7 @@ class Mastermind
                 end
             end
             count_guess
+            count_player_code_maker_points
             puts "-----+-----+-----" + "\n"
 
             swap_roles if game_over
@@ -259,6 +260,13 @@ class Mastermind
     def count_player_code_maker_points
         @player_points[@code_maker] ||= 0
         @player_points[@code_maker] += 1
+    end
+
+    def current_code_maker_score
+        if @code_maker
+            code_maker_score = @player_points[@code_maker] || 0
+            puts "#{@code_maker} score: #{code_maker_score}"
+        end
     end
 
     def code_maker_selection
