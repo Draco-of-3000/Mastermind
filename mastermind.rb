@@ -189,7 +189,7 @@ class Mastermind
       
         code_maker_selection if @code_maker
       
-        until @@number_of_guesses == 5 || @@code_breaker_code == @@code_maker_code 
+        until game_over 
             @@code_breaker_code.clear
 
             code_breaker_selection if @code_breaker
