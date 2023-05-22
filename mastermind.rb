@@ -405,7 +405,7 @@ class Mastermind
         if winners.length == 1
           puts "#{winners[0]} wins!"
         else
-          puts "It's a tie between #{winners.join(' and ')}!"
+          puts "It's a tie!"
         end
     end
 
