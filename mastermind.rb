@@ -29,7 +29,7 @@ class Mastermind
     attr_accessor :cpu_code 
     def initialize
         @cpu_code = []
-        @player_points = []
+        @player_points = {}
     end
 
     def cpu_selection
