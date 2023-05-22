@@ -187,12 +187,12 @@ class Mastermind
           @@human_answer = @answer
         end
       
-        @@code_maker_selection
+        code_maker_selection
       
         until @@number_of_guesses == 5 || @@code_breaker_code == @@code_maker_code 
             @@code_breaker_code.clear
 
-            @@code_breaker_selection
+            code_breaker_selection
 
             puts "\n" "Feedback" + "\n" + "-----+-----+-----"
 
@@ -244,7 +244,15 @@ class Mastermind
             players << [player_name, player_role]
         end
 
-        players
+        puts players
+    end
+
+    def assign_player_roles(player_name, player_role)
+        if player_role == "maker"
+            @code_maker = player_name
+        elsif player_role == "breaker"
+            @code_breaker = player_name
+        end
     end
 
     def code_maker_selection
@@ -422,4 +430,4 @@ class Mastermind
 end
 
 game = Mastermind.new
-game.get_player_names
+game.get_player_names_and_roles
