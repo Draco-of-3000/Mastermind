@@ -403,7 +403,7 @@ class Mastermind
         winners = @player_points.select { |player, points| points == max_points }.keys
       
         if winners.length == 1
-          puts "#{winners[0]} wins!"
+          puts "#{winners[0]} wins the game!"
         else
           puts "It's a tie!"
         end
