@@ -360,7 +360,7 @@ class Mastermind
 
         if @code_maker && @code_breaker
             puts "#{@code_maker} is the code maker now"
-            puts "#{@code_breaker}, can you break #{@@code_maker_name}'s code?"
+            puts "#{@code_breaker}, can you break #{@code_maker}'s code?"
         end
     end
       
