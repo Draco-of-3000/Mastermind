@@ -248,7 +248,7 @@ class Mastermind
             assign_player_roles(player_name, player_role)
         end
 
-        player_vs_player
+        play_game
     end
 
     def assign_player_roles(player_name, player_role)
