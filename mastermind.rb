@@ -156,13 +156,17 @@ class Mastermind
     end
 
     def play_game
-        @@rounds.times do |round|
+        until @@rounds == 0
           puts "-----+-----+-----"
-          puts "Round #{round + 1} starts now"
+          puts "Round #{@@rounds} starts now"
 
           reset_variables
           
           player_vs_player
+          @@rounds -= 1
+        end
+        if @@rounds == 0
+            declare_winner_after_game_over
         end
     end
 
