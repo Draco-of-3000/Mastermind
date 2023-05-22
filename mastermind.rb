@@ -347,12 +347,9 @@ class Mastermind
     end
 
     def assign_points
-        if @@number_of_guesses == 5 || @code_breaker_code == @code_maker_code
-          if @player_one.role == 'maker'
-            @@player_one_points = "#{@player1_name} points: #{@@code_maker_points}"
-          elsif @player_two.role == 'maker'
-            @@player_two_points = "#{@player2_name} points: #{@@code_maker_points}"
-          end
+        if @code_maker
+            count_player_code_maker_points
+            puts "#{@code_maker} points: #{@player_points[@code_maker]}"
         end
     end
       
