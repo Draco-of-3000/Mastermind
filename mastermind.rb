@@ -213,7 +213,6 @@ class Mastermind
         end
     end
       
-
     def get_player_names_and_roles
         roles = ["maker", "breaker"]
         puts "Welcome to Mastermind"
@@ -254,6 +253,11 @@ class Mastermind
         elsif player_role == "breaker"
             @code_breaker = player_name
         end
+    end
+
+    def count_player_code_maker_points
+        @player_points[@code_maker] ||= 0
+        @player_points[@code_maker] += 1
     end
 
     def code_maker_selection
