@@ -241,17 +241,16 @@ class Mastermind
         player_one = Players.new(@player1_name, @player1_role)
 
         @player2_role = player_one.role == 'maker' ? 'breaker' : 'maker'
-        
+
         player_two = Players.new(@player2_name, @player2_role)
     end
 
     def code_maker_selection
         puts "Pick 4 colors out of #{@@colors} in any order you want to be your code"
         
-        until @@player_one_code.size == 4
+        until @@code_maker_code.size == 4
             @input = gets.chomp.downcase
-            @@player_one_code.push(@input)
-            @@code_maker_code = @@player_one_code
+            @@code_maker_code = @input
         end
         @@code_maker_code
     end
@@ -259,10 +258,9 @@ class Mastermind
     def code_breaker_selection
         puts "Attempt to break the code by picking 4 colors out of #{@@colors} in any order"
         
-        until @@player_two_code.size == 4
+        until @@code_breaker_code.size == 4
             @input = gets.chomp.downcase
-            @@player_two_code.push(@input)
-            @@code_breaker_code = @@player_two_code
+            @@code_breaker_code = @input
         end
         @@code_breaker_code
     end
