@@ -368,8 +368,6 @@ class Mastermind
       
 
     def swap_roles
-        puts "Time to switch roles!"
-        
         if @code_maker && @code_breaker
             previous_code_maker = @code_maker
             previous_code_maker_points = @player_points[previous_code_maker] || 0
@@ -378,8 +376,7 @@ class Mastermind
 
             @player_points[@code_maker] ||= 0
             current_code_maker_points = @player_points[@code_maker]
-
-            puts "#{previous_code_maker} points: #{previous_code_maker_points}"
+ 
             puts "#{@code_maker} is the code maker now"
             puts "#{@code_breaker}, can you break #{@code_maker}'s code?"
             puts "#{@code_maker} points: #{current_code_maker_points}"
