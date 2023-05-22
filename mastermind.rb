@@ -247,22 +247,6 @@ class Mastermind
         players
     end
 
-    def get_player_roles
-        puts "Would you like to be Code Maker or Code Breaker, type 'Maker' or 'Breaker'"
-        @player1_role = gets.chomp.downcase
-
-        until @player1_role == 'maker' || 'breaker'
-            puts "Invalid input, type 'Maker' or 'Breaker'"
-            @player1_role = gets.chomp.downcase
-        end
-
-        player_one = Players.new(@player1_name, @player1_role)
-
-        @player2_role = player_one.role == 'maker' ? 'breaker' : 'maker'
-
-        player_two = Players.new(@player2_name, @player2_role)
-    end
-
     def code_maker_selection
         puts "Pick 4 colors out of #{@@colors} in any order you want to be your code"
         
