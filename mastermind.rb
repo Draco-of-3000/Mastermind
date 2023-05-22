@@ -195,8 +195,6 @@ class Mastermind
 
             code_breaker_selection if @code_breaker
 
-            puts current_code_maker_score
-
             puts "\n" "Feedback" + "\n" + "-----+-----+-----"
 
             @@code_breaker_code.each_with_index do |color, index|
@@ -211,7 +209,11 @@ class Mastermind
             end
             count_guess
             count_player_code_maker_points
-            puts "-----+-----+-----" + "\n"
+            puts "-----+-----+-----"
+            puts current_code_maker_score
+            puts "-----+-----+-----"
+            declare_winner_after_round
+            puts "-----+-----+-----" 
 
             swap_roles if game_over
         end
