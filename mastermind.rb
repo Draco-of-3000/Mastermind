@@ -236,17 +236,15 @@ class Mastermind
             player_name = gets.chomp
             available_roles = roles.dup
 
-            if index == 1 && players [0][1] == "maker"
-                available_roles.delete("maker")
-            elsif index == 1 && players [0][1] == "breaker"
-                available_roles.delete("breaker")
+            if index == 1
+                available_roles.delete(players[0][1])
             end
 
             puts "Available roles: maker, breaker"
             puts "#{player_name}, enter your role"
             player_role = gets.chomp.downcase
 
-            until roles.include?(player_role)
+            until available_roles.include?(player_role)
                 puts "Invalid role! Available roles: code maker, code breaker"
                 puts "#{player_name}, enter your role"
                 player_role = gets.chomp.downcase
