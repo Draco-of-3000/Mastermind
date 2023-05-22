@@ -157,6 +157,7 @@ class Mastermind
 
     def play_game
         @@rounds.times do |round|
+          puts "-----+-----+-----"
           puts "Round #{round + 1} starts now"
 
           reset_variables
@@ -362,7 +363,6 @@ class Mastermind
     def assign_points
         if @code_maker
             count_player_code_maker_points
-            puts "#{@code_maker} points: #{@player_points[@code_maker]}"
         end
     end
       
