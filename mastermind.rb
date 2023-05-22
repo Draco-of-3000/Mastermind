@@ -387,9 +387,9 @@ class Mastermind
 
     def declare_winner_after_round
         if @@code_breaker_code == @@code_maker_code 
-          puts "#{@code_breaker_name} wins this round!"
+          puts "#{@code_breaker} wins this round!"
         elsif @@number_of_guesses == 5 && @@code_breaker_code != @@code_maker_code
-          puts "#{@code_maker_name} wins this round!"
+          puts "#{@code_maker} wins this round!"
         end
     end
       
