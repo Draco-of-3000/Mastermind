@@ -210,6 +210,7 @@ class Mastermind
             end
             count_guess
             count_player_code_maker_points
+            assign_points
             puts "-----+-----+-----"
             puts current_code_maker_score
             puts "-----+-----+-----"
