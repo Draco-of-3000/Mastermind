@@ -265,6 +265,10 @@ class Mastermind
         @@code_breaker_code
     end
 
+    def game_over
+        @@number_of_guesses == 5 || @@code_breaker_code == @@code_maker_code
+    end
+
     def get_number_of_games
         puts "How many rounds do you want to play?"
         @@rounds = nil
