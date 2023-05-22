@@ -242,6 +242,7 @@ class Mastermind
             end
 
             players << [player_name, player_role]
+            assign_player_roles(player_name, player_role)
         end
 
         puts players
