@@ -195,6 +195,8 @@ class Mastermind
 
             code_breaker_selection if @code_breaker
 
+            puts current_code_maker_score
+
             puts "\n" "Feedback" + "\n" + "-----+-----+-----"
 
             @@code_breaker_code.each_with_index do |color, index|
