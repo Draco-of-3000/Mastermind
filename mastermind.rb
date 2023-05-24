@@ -276,6 +276,10 @@ class Mastermind
         end
     end
 
+    def guesses_left
+        "Number of guesses left #{@@number_of_guesses}"
+    end
+
     def code_maker_selection
         puts "Pick 4 colors out of #{@@colors} in any order you want to be your code"
 
