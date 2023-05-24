@@ -25,6 +25,8 @@ class Mastermind
     @@temp_selection = []
     @@code_breaker_name = " "
     @@code_maker_name = " "
+    @@cpu_previous_guesses = []
+    @@feedbacks = []
 
     attr_accessor :cpu_code 
     def initialize
@@ -33,7 +35,27 @@ class Mastermind
     end
 
     def cpu_selection
+        if @@cpu_previous_guesses.empty?
         @random_colors = @@colors.sample(4).map(&:downcase)
+        else
+            possible_colors = @@colors - cpu_previous_guesses[-1]
+            @random_colors = []
+
+            4.times do |index|
+                if @@feedbacks.last[index] == correct_feedback
+                    @random_colors << @@cpu_previous_guesses[-1][index]
+                elsif @@feedbacks.last[index] == mid_feedback
+                    available_positions = (0..3).to_a - [index]
+                    available_colors = possible_colors - @random_colors
+                    next_position = available_positions.sample
+                    @random_colors[next_position] == available_colors.sample
+                else
+                    available_colors = possible_colors - @random_colors
+                    @random_colors << available_colors.sample
+                end
+            end
+        end
+
         @result = @random_colors
         return @result
     end
