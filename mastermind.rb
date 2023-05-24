@@ -372,6 +372,24 @@ class Mastermind
         return "black"
     end
 
+    def randomized_feedback
+        feedback = []
+
+        @@code_breaker_code.each_with_index do |color, index|
+            if @@code_maker_code[index] == color
+              feedback << correct_feedback
+            elsif @@code_maker_code.include?(color)
+              feedback << mid_feedback
+            else
+              feedback << wrong_feedback
+            end
+        end
+
+        feedback.shuffle!
+
+        puts feedback
+    end
+
     def count_code_maker_points
         @@code_maker_points += 1
         @@code_maker_points
