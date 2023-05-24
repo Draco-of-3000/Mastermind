@@ -35,31 +35,11 @@ class Mastermind
     end
 
     def cpu_selection
-        if @@cpu_previous_guesses.empty?
-          @random_colors = @@colors.sample(4).map(&:downcase)
-        else
-          last_feedback = @@feedbacks.last
-          @random_colors = @@cpu_previous_guesses[-1].dup
-      
-          @random_colors.each_with_index do |color, index|
-            if last_feedback[index] == correct_feedback
-              # Do nothing, keep the color at the same position
-            elsif last_feedback[index] == mid_feedback
-              possible_colors = @@colors - @@cpu_previous_guesses[-1]
-              available_positions = (0..3).to_a - [index]
-              next_position = available_positions.sample
-              @random_colors[next_position] = possible_colors.sample
-            else
-              possible_colors = @@colors - @@cpu_previous_guesses[-1]
-              @random_colors[index] = possible_colors.sample
-            end
-          end
-        end
-      
-        @random_colors
+        @random_colors = @@colors.sample(4).map(&:downcase)
+        @result = @random_colors
+        return @result
     end
-      
-      
+    
     def human_selection
         puts "Pick 4 colors out of #{@@colors} in any order you want to be your code"
         
