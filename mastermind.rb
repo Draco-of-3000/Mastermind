@@ -171,7 +171,7 @@ class Mastermind
               feedback << wrong_feedback
             end
         end
-        feedback
+        puts feedback
     end
 
     def play_game
