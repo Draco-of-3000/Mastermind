@@ -36,30 +36,30 @@ class Mastermind
 
     def cpu_selection
         if @@cpu_previous_guesses.empty?
-        @random_colors = @@colors.sample(4).map(&:downcase)
+          @random_colors = @@colors.sample(4).map(&:downcase)
         else
-            possible_colors = @@colors - @@cpu_previous_guesses[-1]
-            @random_colors = []
-
-            4.times do |index|
-                if @@feedbacks.last[index] == correct_feedback
-                    @random_colors << @@cpu_previous_guesses[-1][index]
-                elsif @@feedbacks.last[index] == mid_feedback
-                    available_positions = (0..3).to_a - [index]
-                    available_colors = possible_colors - @random_colors
-                    next_position = available_positions.sample
-                    @random_colors[next_position] == available_colors.sample
-                else
-                    available_colors = possible_colors - @random_colors
-                    @random_colors << available_colors.sample
-                end
+          last_feedback = @@feedbacks.last
+          @random_colors = @@cpu_previous_guesses[-1].dup
+      
+          @random_colors.each_with_index do |color, index|
+            if last_feedback[index] == correct_feedback
+              # Do nothing, keep the color at the same position
+            elsif last_feedback[index] == mid_feedback
+              possible_colors = @@colors - @@cpu_previous_guesses[-1]
+              available_positions = (0..3).to_a - [index]
+              next_position = available_positions.sample
+              @random_colors[next_position] = possible_colors.sample
+            else
+              possible_colors = @@colors - @@cpu_previous_guesses[-1]
+              @random_colors[index] = possible_colors.sample
             end
+          end
         end
-
-        @result = @random_colors
-        return @result
+      
+        @random_colors
     end
-    
+      
+      
     def human_selection
         puts "Pick 4 colors out of #{@@colors} in any order you want to be your code"
         
@@ -168,10 +168,7 @@ class Mastermind
 
             puts code_maker_score
 
-            puts generate_feedback_for_cpu
-
-            @@cpu_previous_guesses << @cpu_code.dup
-            @@feedbacks << generate_feedback_for_cpu
+            generate_feedback_for_cpu
 
             puts "Code Breaker's guess = #{cpu_selection}"
             count_code_maker_points
