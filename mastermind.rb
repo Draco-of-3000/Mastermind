@@ -203,7 +203,6 @@ class Mastermind
             puts "\n" "Feedback" + "\n" + "-----+-----+-----"
 
             randomized_feedback
-            
             count_guess
             assign_points
             puts "-----+-----+-----"
@@ -260,6 +259,9 @@ class Mastermind
     def count_player_code_maker_points
         @player_points[@code_maker] ||= 0
         @player_points[@code_maker] += 1
+        if @@number_of_guesses == 5 && @@code_breaker_code != @@code_maker_code
+            @player_points[@code_maker] += 1
+        end
     end
 
     def current_code_maker_score
