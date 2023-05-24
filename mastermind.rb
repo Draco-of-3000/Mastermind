@@ -279,11 +279,21 @@ class Mastermind
 
     def code_maker_selection
         puts "Pick 4 colors out of #{@@colors} in any order you want to be your code"
-        
+
+        @input = []
+
         until @@code_maker_code.size == 4
             @input = gets.chomp.downcase
-            @@code_maker_code.push(@input)
+
+            if @@code_maker_code.include?(@input)
+                puts "You have already selected #{@input}. Choose a different color."
+            elsif !@@colors.map(&:downcase).include?(@input)
+                puts "Invalid Selection, please select colors from #{@@colors}"
+            else
+                @@code_maker_code.push(@input)
+            end
         end
+
         @@code_maker_code
     end
 
