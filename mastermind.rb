@@ -27,6 +27,7 @@ class Mastermind
     @@code_maker_name = " "
     @@cpu_previous_guesses = []
     @@feedbacks = []
+    @@user_round = " "
 
     attr_accessor :cpu_code 
     def initialize
@@ -350,6 +351,7 @@ class Mastermind
                 puts "Invalid input. Please enter a valid number."
             end 
         end
+        @@user_round = @@rounds
         @@rounds
     end
 
@@ -453,18 +455,23 @@ class Mastermind
       
 
     def declare_winner_after_game_over
-        max_points = @player_points.values.max
-        winner = @player_points.select { |player, points| points == max_points }.keys
-        min_points = @player_points.values.min 
-        loser = @player_points.select { |player, points| points == min_points }.keys
-      
-        if winner.length == 1
+        if @@user_round == 1 && @@code_breaker_code == @@code_maker_code
             puts "GAME OVER!"
-            puts "#{winner[0]} wins the game with #{max_points} point(s)!"
-            puts "#{loser[0]} loses the game with #{min_points} point(s)!"
+            puts "#{@code_breaker} broke the code and won the game!"
         else
-          puts "It's a tie!"
-        end
+            max_points = @player_points.values.max
+            winner = @player_points.select { |player, points| points == max_points }.keys
+            min_points = @player_points.values.min 
+            loser = @player_points.select { |player, points| points == min_points }.keys
+              
+            if winner.length == 1
+                puts "GAME OVER!"
+                puts "#{winner[0]} wins the game with #{max_points} point(s)!"
+                puts "#{loser[0]} loses the game with #{min_points} point(s)!"
+            else
+                puts "It's a tie!"
+            end
+        end 
     end
 
     def reveal_cpu_answer
