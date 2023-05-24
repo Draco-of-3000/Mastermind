@@ -503,8 +503,21 @@ class Mastermind
         end
     end
 
-    def new_game
+    def start_game
+        puts "Do you want to play against the cpu or another human player? \n Type cpu or player"
+        @input = gets.chomp.downcase
 
+        if @input == 'cpu'
+            puts "Do you want to be Code Breaker or Code Maker \n Type maker or breaker "
+            role = gets.chomp.downcase
+            if role == 'maker'
+                cpu_code_breaker
+            elsif role == 'breaker'
+                cpu_code_maker
+            end
+        elsif @input == 'player'
+            get_player_names_and_roles
+        end
     end
 
 end
