@@ -237,7 +237,7 @@ class Mastermind
             puts current_code_maker_score
             puts guesses_left
             puts "-----+-----+-----"
-            declare_winner_after_round
+            declare_winner_after_round if @@rounds > 1
             puts "-----+-----+-----" 
 
             swap_roles if game_over && @@rounds > 1
