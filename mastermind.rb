@@ -216,6 +216,7 @@ class Mastermind
             assign_points
             puts "-----+-----+-----"
             puts current_code_maker_score
+            puts guesses_left
             puts "-----+-----+-----"
             declare_winner_after_round
             puts "-----+-----+-----" 
@@ -277,7 +278,7 @@ class Mastermind
     end
 
     def guesses_left
-        "Number of guesses left #{@@number_of_guesses}"
+        "Number of guesses made: #{@@number_of_guesses}"
     end
 
     def code_maker_selection
