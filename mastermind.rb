@@ -187,6 +187,21 @@ class Mastermind
 
     end
 
+    def generate_feedback_for_cpu
+        feedback = []
+
+        @cpu_code.each_with_index do |color, index|
+            if @@human_code[index] == color
+              feedback << correct_feedback
+            elsif @@human_code.include?(color)
+              feedback << mid_feedback
+            else
+              feedback << wrong_feedback
+            end
+        end
+        feedback
+    end
+
     def play_game
         until @@rounds == 0
           puts "-----+-----+-----"
