@@ -202,16 +202,8 @@ class Mastermind
 
             puts "\n" "Feedback" + "\n" + "-----+-----+-----"
 
-            @@code_breaker_code.each_with_index do |color, index|
-
-                if @@code_maker_code[index] == color
-                  puts correct_feedback
-                elsif @@code_maker_code.include?(color)
-                  puts mid_feedback
-                else
-                  puts wrong_feedback
-                end
-            end
+            randomized_feedback
+            
             count_guess
             assign_points
             puts "-----+-----+-----"
