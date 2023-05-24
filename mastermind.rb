@@ -454,10 +454,14 @@ class Mastermind
 
     def declare_winner_after_game_over
         max_points = @player_points.values.max
-        winners = @player_points.select { |player, points| points == max_points }.keys
+        winner = @player_points.select { |player, points| points == max_points }.keys
+        min_points = @player_points.values.min 
+        loser = @player_points.select { |player, points| points == min_points }.keys
       
-        if winners.length == 1
-          puts "#{winners[0]} wins the game!"
+        if winner.length == 1
+            puts "GAME OVER!"
+            puts "#{winner[0]} wins the game with #{max_points} point(s)!"
+            puts "#{loser[0]} loses the game with #{min_points} point(s)!"
         else
           puts "It's a tie!"
         end
