@@ -146,6 +146,16 @@ class Mastermind
 
             puts code_maker_score
 
+            @cpu_code.each_with_index do |color, index|
+                if @@human_code[index] == color
+                  puts correct_feedback
+                elsif @@human_code.include?(color)
+                  puts mid_feedback
+                else
+                  puts wrong_feedback
+                end
+            end
+
             puts "Code Breaker's guess = #{cpu_selection}"
             count_code_maker_points
             count_guess
