@@ -239,7 +239,7 @@ class Mastermind
             declare_winner_after_round
             puts "-----+-----+-----" 
 
-            swap_roles if game_over
+            swap_roles if game_over && @@rounds > 1
         end
     end
       
