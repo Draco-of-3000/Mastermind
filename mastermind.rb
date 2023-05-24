@@ -168,7 +168,7 @@ class Mastermind
 
             puts code_maker_score
 
-            generate_feedback_for_cpu
+            puts generate_feedback_for_cpu
 
             @@cpu_previous_guesses << @cpu_code.dup
             @@feedbacks << generate_feedback_for_cpu
