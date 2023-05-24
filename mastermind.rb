@@ -38,7 +38,7 @@ class Mastermind
         if @@cpu_previous_guesses.empty?
         @random_colors = @@colors.sample(4).map(&:downcase)
         else
-            possible_colors = @@colors - cpu_previous_guesses[-1]
+            possible_colors = @@colors - @@cpu_previous_guesses[-1]
             @random_colors = []
 
             4.times do |index|
@@ -514,4 +514,4 @@ class Mastermind
 end
 
 game = Mastermind.new
-game.get_player_names_and_roles
+game.cpu_code_breaker
