@@ -142,6 +142,7 @@ class Mastermind
         end
 
         human_selection
+        @cpu_code = cpu_selection
 
         until @@number_of_guesses == 5 || @cpu_code == @@human_code
             cpu_selection
