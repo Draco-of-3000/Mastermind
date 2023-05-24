@@ -45,7 +45,14 @@ class Mastermind
         
         until @@human_code.size == 4
             @input = gets.chomp.downcase
-            @@human_code.push(@input)
+
+            if @@human_code.include?(@input)
+                puts "You have already selected #{@input}. Choose a different color."
+            elsif !@@colors.map(&:downcase).include?(@input)
+                puts "Invalid Selection, please select colors from #{@@colors}"
+            else
+                @@human_code.push(@input)
+            end
         end
         @@human_code
     end
@@ -265,6 +272,7 @@ class Mastermind
             assign_player_roles(player_name, player_role)
         end
 
+        get_number_of_games
         play_game
     end
 
@@ -311,7 +319,6 @@ class Mastermind
                 @@code_maker_code.push(@input)
             end
         end
-
         @@code_maker_code
     end
 
@@ -492,4 +499,4 @@ class Mastermind
 end
 
 game = Mastermind.new
-game.cpu_code_breaker
+game.get_player_names_and_roles
