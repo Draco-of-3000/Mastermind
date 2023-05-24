@@ -395,6 +395,24 @@ class Mastermind
         return "black"
     end
 
+    def randomized_feedback_vs_cpu
+        feedback = []
+
+        @@human_code.each_with_index do |color, index|
+            if @cpu_code[index] == color
+              feedback << correct_feedback
+            elsif @cpu_code.include?(color)
+              feedback << mid_feedback
+            else
+              feedback << wrong_feedback
+            end
+        end
+
+        feedback.shuffle!
+
+        puts feedback
+    end
+
     def randomized_feedback
         feedback = []
 
@@ -523,4 +541,4 @@ class Mastermind
 end
 
 game = Mastermind.new
-game.get_player_names_and_roles
+game.start_game
