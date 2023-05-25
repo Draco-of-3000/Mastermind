@@ -143,11 +143,13 @@ class Mastermind
     end
 
     def cpu_code_breaker
+        line_seperator
         puts "Welcome to Player vs CPU! You are the Code Maker and the CPU is the Code Breaker" + "\n" +
         "The CPU has 10 tries to guess the right colors and their right positions" + "\n" +
         "The onus is on you to come up with an unbreakable code" + "\n" +
         "Are you up to the task Code Maker? \n Type 'yes' to continue"
-
+        line_seperator
+        
         until @@human_answer == 'yes'
             @answer = gets.chomp.downcase
             @@human_answer = @answer
