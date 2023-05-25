@@ -62,9 +62,10 @@ class Mastermind
         line_seperator
 
         puts "Welcome to Player vs CPU! You are the Code Breaker and the CPU is the Code Maker" + "\n" +
-        "You have 10 tries to guess the write colors and their right positions" + "\n" +
+        "You have 10 tries to guess the right colors and their right positions" + "\n" +
         "The feedback will be 'white' for every color you get right but not in order!" + "\n" +
         "The feedback will be 'black' for every color you get right but not in order!" + "\n" +
+        "The feedback will be 'null' for every wrong color but not in order!" + "\n" +
         "The onus is on you to use this information to break the code" + "\n" +
         "Are you up to the task Code Breaker? \n Type 'yes' to continue"
 
