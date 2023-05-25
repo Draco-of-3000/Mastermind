@@ -236,17 +236,17 @@ class Mastermind
 
             code_breaker_selection if @code_breaker
 
-            puts "\n" "Feedback" + "\n" + "-----+-----+-----"
+            puts "\n" "Feedback" + "\n" + line_seperator
 
             randomized_feedback
             count_guess
             assign_points
-            puts "-----+-----+-----"
+            line_seperator
             puts current_code_maker_score
             puts guesses_left
-            puts "-----+-----+-----"
+            line_seperator
             declare_winner_after_round if @@rounds > 1
-            puts "-----+-----+-----" 
+            line_seperator
 
             swap_roles if game_over && @@rounds > 1
         end
