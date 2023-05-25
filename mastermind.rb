@@ -65,66 +65,8 @@ class Mastermind
         cpu_code_maker_game_loop
     end
 
-    def human_code_maker
-        if @player_one.role == 'maker'
-            @code_maker_selection = player_one_selection
-            @code_breaker_selection = player_two_selection
-            @@player_one_points = @@code_maker_points 
-        elsif @player_two.role == 'maker'
-            @code_maker_selection = player_two_selection
-            @code_breaker_selection = player_one_selection
-            @@player_two_points = @@code_maker_points
-        end
-
-        @code_maker_selection
-        
-        until @@number_of_guesses == 5 || @@code_breaker_code == @@code_maker_code
-            @@code_breaker_code.clear
-
-            @code_breaker_selection
-
-            @@code_maker_code.each_with_index do |color, index|
-                if @@code_breaker_code[index] == color
-                  puts correct_feedback
-                elsif @@code_breaker_code.include?(color)
-                  puts mid_feedback
-                else
-                  puts wrong_feedback
-                end
-            end
-            count_code_maker_points
-            count_guess
-            assign_points
-            declare_winner_after_round
-            swap_roles
-        end
-    end
-
-    def human_code_breaker
-        if @player_one.role == 'breaker'
-            @code_breaker_selection = player_one_selection
-            @code_maker_selection = player_two_selection
-            @@player_one_points = @@code_maker_points
-        elsif @player_two.role == 'maker'
-            @code_breaker_selection = player_two_selection
-            @code_maker_selection = player_one_selection
-            @@player_two_points = @@code_maker_points
-        end
-        @code_breaker_selection
-    end
-
     def code_maker_score
         puts "Code Maker score = #{@@code_maker_points} points"
-    end
-
-    def player_code_maker_score
-        if @player_one.role == 'maker'
-            @@player_one_points = count_code_maker_points
-            puts "\n" + "Code Maker #{@player1_name}'s points: #{@@player_one_points}"
-        elsif @player_two.role == 'maker'
-            @@player_two_points = count_code_maker_points
-            puts "\n" + "Code Maker #{@player2_name}'s points: #{@@player_two_points}"
-        end
     end
 
     def cpu_code_breaker
@@ -201,14 +143,7 @@ class Mastermind
         @@code_breaker_code = []
         @@human_answer = " "
         @@code_maker_code = []
-        @@player_one_code = []
-        @@player_two_code = []
         @@code_maker_points = 0
-        @@player_one_points = []
-        @@player_two_points = []
-        @@temp_selection = []
-        player_one_selection = []
-        player_two_selection = []
     end
 
     def player_vs_player
@@ -451,7 +386,6 @@ class Mastermind
         end
     end
       
-
     def swap_roles
         if @code_maker && @code_breaker
             previous_code_maker = @code_maker
@@ -468,7 +402,6 @@ class Mastermind
         end
     end
       
-
     def declare_winner_after_round
         if @@code_breaker_code == @@code_maker_code 
             puts "#{@code_breaker} is victorious! The code succumbs to your might," + "\n" +
@@ -480,7 +413,6 @@ class Mastermind
         end
     end
       
-
     def declare_winner_after_game_over
         if @@user_round == 1 && @@code_breaker_code == @@code_maker_code
             puts "GAME OVER!"
