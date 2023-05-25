@@ -214,6 +214,7 @@ class Mastermind
     end
 
     def player_vs_player
+        line_seperator
         puts "You have chosen Player vs Player! " + "\n" +
         "Players start of by selecting a Code Breaker or Code Maker role" + "\n" +
         "The Code Maker sets a code" "\n" +
@@ -223,6 +224,7 @@ class Mastermind
         "The feedback will be 'null' for every wrong color but not in order!" + "\n" +
         "The onus is on you to use this information to outwit the other player" + "\n" +
         "Are you up to the task dear player? \n Type 'yes' to continue"
+        line_seperator
         
         until @@human_answer == 'yes'
           @answer = gets.chomp.downcase
@@ -236,7 +238,8 @@ class Mastermind
 
             code_breaker_selection if @code_breaker
 
-            puts "\n" "Feedback" + "\n" + line_seperator
+            puts "\n" "Feedback\n"
+            line_seperator
 
             randomized_feedback
             count_guess
