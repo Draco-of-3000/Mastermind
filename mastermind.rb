@@ -521,6 +521,10 @@ class Mastermind
         end
     end
 
+    def line_seperator
+        puts "-----+-----+-----"
+    end
+
     def start_game
         puts "Do you want to play against the cpu or another human player? \n Type cpu or player"
         @input = gets.chomp.downcase
