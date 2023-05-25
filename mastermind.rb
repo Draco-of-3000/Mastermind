@@ -59,12 +59,16 @@ class Mastermind
     end
 
     def cpu_code_maker
+        line_seperator
+
         puts "Welcome to Mastermind! You are the Code Breaker and the CPU is the Code Maker" + "\n" +
         "You have 10 tries to guess the write colors and their right positions" + "\n" +
         "The feedback will be 'white' for every color you get right but not in order!" + "\n" +
         "The feedback will be 'black' for every color you get right but not in order!" + "\n" +
         "The onus is on you to use this information to break the code" + "\n" +
-        "Are you up to the task Code Breaker? type 'yes' to continue"
+        "Are you up to the task Code Breaker? \n Type 'yes' to continue"
+
+        line_seperator
 
         until @@human_answer == 'yes'
             @answer = gets.chomp.downcase
@@ -372,12 +376,20 @@ class Mastermind
 
             human_selection
 
+            line_seperator
+
             puts code_maker_score
 
+            puts "\n" "Feedback\n"
+            line_seperator
+
             randomized_feedback_vs_cpu
+
+            line_seperator
             count_code_maker_points
             count_guess
             declare_winner_as_code_breaker
+            line_seperator
         end 
     end
 
