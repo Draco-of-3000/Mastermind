@@ -423,10 +423,13 @@ class Mastermind
             min_points = @player_points.values.min 
             loser = @player_points.select { |player, points| points == min_points }.keys
               
-            if winner.length == 1
+            if winner.length == 1 && winner != loser
                 puts "GAME OVER!"
                 puts "#{winner[0]} wins the game with #{max_points} point(s)!"
                 puts "#{loser[0]} loses the game with #{min_points} point(s)!"
+            elsif winner.length == 1 && winner == loser
+                puts "GAME OVER!"
+                puts "#{winner[0]} wins the game with #{max_points} point(s)!"
             else
                 puts "It's a tie!"
             end
