@@ -158,7 +158,7 @@ class Mastermind
         human_selection
         @cpu_code = cpu_selection
 
-        until @@number_of_guesses == 5 || @cpu_code == @@human_code
+        until @@number_of_guesses == 10 || @cpu_code == @@human_code
             cpu_selection
 
             line_seperator
@@ -358,7 +358,7 @@ class Mastermind
     end
 
     def game_over
-        @@number_of_guesses == 5 || @@code_breaker_code == @@code_maker_code
+        @@number_of_guesses == 10 || @@code_breaker_code == @@code_maker_code
     end
 
     def get_number_of_games
@@ -380,7 +380,7 @@ class Mastermind
     end
 
     def cpu_code_maker_game_loop
-        until @@number_of_guesses == 5 || @@human_code == @cpu_code
+        until @@number_of_guesses == 10 || @@human_code == @cpu_code
             @@human_code.clear
 
             human_selection
