@@ -521,8 +521,6 @@ class Mastermind
             "In colors aligned, mastery shines bright." "\n" +
             "Congratulations, Code Breaker, for your grand win!"
         end
-
-        reveal_cpu_answer
     end
 
     def declare_winner_as_code_maker
