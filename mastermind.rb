@@ -285,15 +285,19 @@ class Mastermind
         puts "How many rounds do you want to play?"
         @@rounds = nil
 
-        until @@rounds.is_a?(Integer) && @@rounds > 0
-            puts "Enter a positive integer: "
+        until @@rounds.is_a?(Integer) && @@rounds > 0 && @@rounds.even?
+            puts "Enter a positive even integer: "
             input = gets.chomp
 
             if input.match?(/\A\d+\z/)
                 @@rounds = input.to_i
+          
+                unless @@rounds.even?
+                  puts "Invalid input. Please enter an even number."
+                end
             else
                 puts "Invalid input. Please enter a valid number."
-            end 
+            end
         end
         @@user_round = @@rounds
         @@rounds
