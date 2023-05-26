@@ -180,36 +180,40 @@ class Mastermind
       
     def get_player_names_and_roles
         roles = ["maker", "breaker"]
-
+      
         players = []
-
-        2.times do |index|
-            puts "Enter your name Player #{index + 1}:"
-            player_name = gets.chomp
-            available_roles = roles.dup
-
-            if index == 1
-                available_roles.delete(players[0][1])
-            end
-
-            puts "Available roles: maker, breaker"
-            puts "#{player_name}, enter your role"
-            player_role = gets.chomp.downcase
-
-            until available_roles.include?(player_role)
-                puts "Invalid role! Available roles: code maker, code breaker"
-                puts "#{player_name}, enter your role"
-                player_role = gets.chomp.downcase
-            end
-
-            players << [player_name, player_role]
-            assign_player_roles(player_name, player_role)
+      
+        puts "Enter your name Player 1:"
+        player_name = gets.chomp
+      
+        puts "Available roles: maker, breaker"
+        puts "#{player_name}, enter your role"
+        player_role = gets.chomp.downcase
+      
+        until roles.include?(player_role)
+          puts "Invalid role! Available roles: maker, breaker"
+          puts "#{player_name}, enter your role"
+          player_role = gets.chomp.downcase
         end
+      
+        players << [player_name, player_role]
+        assign_player_roles(player_name, player_role)
+      
+        puts "Enter your name Player 2:"
+        player_name = gets.chomp
+      
+        # Automatically assign the remaining role to the second player
+        player_role = roles.find { |role| role != players[0][1] }
+        players << [player_name, player_role]
+        assign_player_roles(player_name, player_role)
+      
         line_seperator
-
+      
         get_number_of_games
         play_game
     end
+      
+      
 
     def assign_player_roles(player_name, player_role)
         if player_role == "maker"
