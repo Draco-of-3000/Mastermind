@@ -124,13 +124,16 @@ class Mastermind
     end
 
     def play_game
+        round = 1
         until @@rounds == 0
-          puts "-----+-----+-----"
-          puts "Round #{@@rounds} starts now"
+          line_seperator
+          puts "Round #{round} starts now"
+          line_seperator
 
           reset_variables
           
           player_vs_player
+          round += 1
           @@rounds -= 1
         end
         if @@rounds == 0
@@ -213,8 +216,6 @@ class Mastermind
         play_game
     end
       
-      
-
     def assign_player_roles(player_name, player_role)
         if player_role == "maker"
             @code_maker = player_name
@@ -259,6 +260,7 @@ class Mastermind
             end
         end
         @@code_maker_code
+        line_seperator
     end
 
     def code_breaker_selection
