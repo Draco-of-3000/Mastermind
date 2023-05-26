@@ -9,7 +9,7 @@ Mastermind is a classic code-breaking game implemented in Ruby using object-orie
 - Randomized secret code generation for the computer.
 - Dynamic scoring system to keep track of points.
 
-**Usage**
+**How To Play**
 - Clone the repository and navigate to the project directory.
 - Make sure you have Ruby installed on your system.
 - Run the following command in your terminal to start the game:
@@ -21,6 +21,8 @@ Mastermind is a classic code-breaking game implemented in Ruby using object-orie
 - If you successfully guess the code within the allotted number of tries, you win the round and prevent the Code Maker from getting maximun points. Otherwise, the Code Maker wins the round with maximum points (11).
 - After each round, the roles will be swapped, and the game will continue for the specified number of rounds.
 - At the end of the game, the winner with the highest points will be declared.
+
+
 
 **Acknowledgements**
 The Mastermind game was originally invented by Mordecai Meirowitz in 1970. This implementation in Ruby is created by Draco 3000.
