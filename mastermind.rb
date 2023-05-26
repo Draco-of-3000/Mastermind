@@ -4,7 +4,7 @@ class Mastermind
     @@human_answer = " "
     @@number_of_guesses = 0
     @@code_maker_points = 1
-    @@rounds = 3
+    @@rounds = 4
     @@code_maker_code = []
     @@code_breaker_code = []
     @@code_maker_selection = []
