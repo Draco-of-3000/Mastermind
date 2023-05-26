@@ -147,18 +147,8 @@ class Mastermind
     end
 
     def player_vs_player
-        line_seperator
-        puts "You have chosen Player vs Player! " + "\n" +
-        "Players start of by selecting a Code Breaker or Code Maker role" + "\n" +
-        "The Code Maker sets a code" "\n" +
-        "The Code Breaker has 10 tries to guess the right colors and their right positions" + "\n" +
-        "The feedback will be 'white' for every color you get right but not in order!" + "\n" +
-        "The feedback will be 'black' for every color you get right but not in order!" + "\n" +
-        "The feedback will be 'null' for every wrong color but not in order!" + "\n" +
-        "The onus is on you to use this information to outwit the other player" + "\n" +
-        "Are you up to the task dear player? \n Type 'yes' to continue"
-        line_seperator
-        
+        puts "Type yes to continue"
+
         until @@human_answer == 'yes'
           @answer = gets.chomp.downcase
           @@human_answer = @answer
@@ -190,7 +180,6 @@ class Mastermind
       
     def get_player_names_and_roles
         roles = ["maker", "breaker"]
-        puts "Welcome to Mastermind"
 
         players = []
 
@@ -216,6 +205,7 @@ class Mastermind
             players << [player_name, player_role]
             assign_player_roles(player_name, player_role)
         end
+        line_seperator
 
         get_number_of_games
         play_game
@@ -484,6 +474,18 @@ class Mastermind
                 cpu_code_maker
             end
         elsif @input == 'player'
+            line_seperator
+            puts "You have chosen Player vs Player! " + "\n" +
+            "Players start of by selecting a Code Breaker or Code Maker role" + "\n" +
+            "The Code Maker sets a code" "\n" +
+            "The Code Breaker has 10 tries to guess the right colors and their right positions" + "\n" +
+            "The feedback will be 'white' for every color you get right but not in order!" + "\n" +
+            "The feedback will be 'black' for every color you get right but not in order!" + "\n" +
+            "The feedback will be 'null' for every wrong color but not in order!" + "\n" +
+            "The onus is on you to use this information to outwit the other player" + "\n" +
+            "Are you up to the task dear player?"
+            line_seperator
+            
             get_player_names_and_roles
         end
     end
