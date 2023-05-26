@@ -23,4 +23,4 @@ Mastermind is a classic code-breaking game implemented in Ruby using object-orie
 - At the end of the game, the winner with the highest points will be declared.
 
 **Acknowledgements**
-- The Mastermind game was originally invented by Mordecai Meirowitz in 1970. This implementation in Ruby is created by Draco 3000.
+- The Mastermind game was originally invented by Mordecai Meirowitz in 1970. This implementation in Ruby is created by Kelvin Acheampong.
